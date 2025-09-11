@@ -18,7 +18,7 @@ Dungeons and Dragons has been rising steadily in popularity for at least the las
 
 ### Design
 
-![mock-up-2](https://github.com/user-attachments/assets/f2d7e422-0c69-4351-81bd-934e87256fea)
+![mock-up-2](https://github.com/user-attachments/assets/faee518d-58c8-4ec4-b7f6-6412d40c6e94)
 
 ## Key Features ### 
 - Simplified Character Sheet with essential stats highlighted and easily accessible
