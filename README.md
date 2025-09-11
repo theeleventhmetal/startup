@@ -1,62 +1,45 @@
-# Your startup name here
+# Virtual Tabletop
 
-[My Notes](notes.md)
-
-A brief description of the application here. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-
-
-> [!NOTE]
->  This is a template for your startup application. You must modify this `README.md` file for each phase of your development. You only need to fill in the section for each deliverable when that deliverable is submitted in Canvas. Without completing the section for a deliverable, the TA will not know what to look for when grading your submission. Feel free to add additional information to each deliverable description, but make sure you at least have the list of rubric items and a description of what you did for each item.
-
-> [!NOTE]
->  If you are not familiar with Markdown then you should review the [documentation](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) before continuing.
+Making the world's most famous TTRPG more accessible
 
 ## 🚀 Specification Deliverable
 
-> [!NOTE]
->  Fill in this sections as the submission artifact for this deliverable. You can refer to this [example](https://github.com/webprogramming260/startup-example/blob/main/README.md) for inspiration.
-
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Dungeons and Dragons has been rising steadily in popularity for at least the last decade. It appeals to a variety of demographics for a variety of different reasons, but many are too overwhelmed by the seemingly complicated nature of the game to give it a try. My virtual tabletop will simplify the classic D&D character sheet as well as provide several additional tools to make the game more accessible both for beginning players and Game Masters. The minimal, retro-themed styling is designed to appeal to those who love the 8-bit graphics of 80s and 90s video games without being too overwhelming at first glance. It will highlight the essentials in order to actually start playing, while still providing more advanced mechanics for those who wish to use them. 
 
 ### Design
 
-![Design image](placeholder.png)
+![mock-up-2](https://github.com/user-attachments/assets/f2d7e422-0c69-4351-81bd-934e87256fea)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+## Key Features ### 
+- Simplified Character Sheet with essential stats highlighted and easily accessible
+- Toggleable privacy settings for character information
+- Virtual game mat with moveable, customizable icons for both player characters and enemies to enable virtual sessions
+- Advanced access for Game Master with view of all player character sheets + story notes
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+## Utilization of Technology ###
 
-### Key features
+**HTML** will be used to structure the basic layout of the website  
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+**CSS** will be used to implement the retro-themed styling as well as the battle animations on the game mat  
 
-### Technologies
+**React** and **Javascript** will be the framework through which the different components are routed  
 
-I am going to use the required technologies in the following ways.
+**Web service** will be used to retrieve user information as well as previous positioning on game mat  
 
-- **HTML** - Description here
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+**Databases** will be used to store authentication and user data such as character stats   
+
+**WebSockets** will be used for realtime updates for both player chat and virtual game mat
+
 
 ## 🚀 AWS deliverable
 
