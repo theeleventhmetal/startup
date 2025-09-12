@@ -1,6 +1,6 @@
 # CS 260 Notes
 
-[My startup - Simon](https://8bitdnd.click)
+[My startup - 8bitDND](https://8bitdnd.click)
 
 ## Helpful links
 
