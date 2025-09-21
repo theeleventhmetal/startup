@@ -19,6 +19,8 @@ No problems worked just like it said in the [instruction](https://github.com/web
 
 ## HTML
 
+Most complicated thing so far is keeping the code looking clean, convention is not enforced at all and it can get super confusing if you don't have your indentation correct
+
 
 ## CSS
 
