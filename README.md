@@ -45,21 +45,21 @@ Dungeons and Dragons has been rising steadily in popularity for at least the las
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://8bitdnd.click).
 
 ## 🚀 HTML deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **HTML pages** - I did not complete this part of the deliverable.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
-- [ ] **Links** - I did not complete this part of the deliverable.
-- [ ] **Text** - I did not complete this part of the deliverable.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **HTML pages** - I created html pages for all the basic function of the app
+- [x] **Proper HTML element usage** - I used a variety of element types
+- [x] **Links** - I created a menu page with links to other pages in the app
+- [x] **Text** - I included text in the header, footer, and placeholders
+- [x] **3rd party API placeholder** - see **Images**
+- [x] **Images** - I included a placeholder image for the eventual API call for new images every page refresh
+- [x] **Login placeholder** - I placed a login placeholder on the front page
+- [x] **DB data placeholder** - I mocked up the character sheet which will use a database to store user data in tabletop.html
+- [x] **WebSocket placeholder** - I mocked up the game mat which will use websockets in tabletop.html
 
 ## 🚀 CSS deliverable
 
