@@ -1,0 +1,64 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  background: #fdf5e6; /* off-white for normal pages */
+  color: #2e2e2e;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* body.login-page {
+  background: url("neverwinter_seascape.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+} */
+
+header {
+  flex: 0 80px;
+}
+
+main {
+  flex: 1 calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+footer {
+  flex: 0 30px;
+}
+
+@media (max-height: 600px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  main {
+    flex: 1 100vh;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* text style */
+
+.big-title {
+  font-size: 5rem;   /* much bigger than h1 default */
+  line-height: 1.2;  /* optional: controls spacing */
+}
