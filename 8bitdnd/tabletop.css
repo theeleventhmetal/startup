@@ -1,0 +1,29 @@
+.tabletop {
+    display: flex;
+    gap: 2em;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.combat-grid {
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.combat-grid th{
+    padding: .5em;
+}
+
+.combat-grid td { 
+    border: 2px solid; 
+    width: 3em; 
+    height: 3em; }
+
+    
+
+.character-sheet {
+    width: 400px;      /* adjust to taste */
+    border: 2px solid;
+    padding: 1em;
+}
