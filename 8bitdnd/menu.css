@@ -1,0 +1,28 @@
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* space between buttons */
+    align-items: center; /* center the buttons horizontally */
+}
+
+.menu-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-size: 1.5rem; /* big text */
+    text-decoration: none;
+    color: white;
+    background-color: #000; /* electric blue or your theme color */
+    border: 2px solid #000;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-align: center;
+    width: 500px;
+}
+
+.menu-button:hover {
+    background-color: #1E90FF;
+    transform: scale(1.05);
+}

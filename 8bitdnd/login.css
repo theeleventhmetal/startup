@@ -1,0 +1,49 @@
+/* Login page specific */
+body.login-page main {
+  flex: 1;                      
+  display: flex;
+  flex-direction: column;
+  justify-content: center;       
+  align-items: center;         
+  gap: 1.5em;                   
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;                      
+}
+
+#login-form input {
+  padding: 0.8em 1em;
+  width: 250px;
+  border: 2px solid #2e2e2e;
+  border-radius: 8px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9em;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+#login-form input:focus {
+  border-color: #1E90FF;
+  box-shadow: 0 0 8px rgba(255, 99, 71, 0.5);
+}
+
+#login-form button {
+  padding: 0.8em 1.5em;
+  background-color: #2e2e2e;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.9em;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+#login-form button:hover {
+  background-color: #1E90FF;
+  transform: translateY(-2px);
+}
