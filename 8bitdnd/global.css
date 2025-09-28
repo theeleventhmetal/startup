@@ -14,6 +14,39 @@ header {
   flex: 0 80px;
 }
 
+/* Header navigation */
+header nav {
+  display: flex;
+  justify-content: left;
+  gap: 1rem;
+  padding: .1rem 0;
+}
+
+header nav a {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.7rem;
+  text-decoration: none;
+  color: white;
+  background-color: #000;
+  border: 2px solid #000;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-family: 'Press Start 2P', monospace;
+}
+
+header nav a:hover {
+  background-color: #1E90FF;
+  transform: scale(1.02);
+}
+
+header hr {                  
+  border: none;
+  border-bottom: 1.5px solid #000;
+  margin: 0;
+  margin-top: 0.5em;                  
+}
+
 main {
   flex: 1;
   display: flex;
@@ -65,4 +98,10 @@ footer hr {
   line-height: 1.2;
   margin: 0;
   margin-bottom: 0.01em;
+}
+.main-header{
+  font-size: 1.5rem;   
+  line-height: 1.2;
+  margin: 0;
+  margin-bottom: 0.2em;
 }
