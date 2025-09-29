@@ -37,6 +37,12 @@ header nav a {
   vertical-align: middle;
 }
 
+header nav a:not([href]) {
+  background-color: #1E90FF; /* gold highlight */
+  color: #000;
+  border-color: #1E90FF;
+}
+
 header nav a:hover {
   background-color: #1E90FF;
   transform: scale(1.02);
