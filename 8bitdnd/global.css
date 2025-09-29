@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
-:root {
-  --header-height: 80px;   /* adjust to your actual header size */
-  --footer-height: 125px;   /* adjust to your actual footer size */
-}
-
 body {
   display: flex;
   flex-direction: column;
@@ -16,15 +11,16 @@ body {
 }
 
 header {
-  flex: 0 80px;
+  flex: 0 100px;
+  padding: 0em 0.5em;
 }
 
 /* Header navigation */
 header nav {
   display: flex;
   justify-content: left;
-  gap: 1rem;
-  padding: .1rem 0;
+  gap: 2rem;
+  
 }
 
 header nav a {
@@ -38,6 +34,7 @@ header nav a {
   border-radius: 4px;
   transition: all 0.2s ease;
   font-family: 'Press Start 2P', monospace;
+  vertical-align: middle;
 }
 
 header nav a:hover {
@@ -46,10 +43,12 @@ header nav a:hover {
 }
 
 header hr {                  
-  border: none;
-  border-bottom: 1.5px solid #000;
-  margin: 0;
-  margin-top: 0.5em;                  
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;              
 }
 
 main {
@@ -61,21 +60,25 @@ main {
 }
 
 footer {
-  height: var(--footer-height);
-  display: flex;                
-  flex-direction: column;       
-  justify-content: left;      
-  align-items: left;          
-  padding: 2.5em 0;             
-  font-size: 0.8em;             
-  color: #000;                  
-  gap: 0.3em;                   
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  align-items: left;
+  padding: 1em 0.5em;      /* reduced padding */
+  font-size: 0.8em;      /* smaller text */
+  color: #000;
+  gap: 0.2em;
 }
 
 footer hr {                  
   border: none;
   border-top: 1.5px solid #000;
-  margin: 0;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
   margin-bottom: 1em;                  
 }
 
@@ -109,5 +112,6 @@ footer hr {
   font-size: 1.5rem;   
   line-height: 1.2;
   margin: 0;
-  margin-bottom: 0.2em;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
 }
