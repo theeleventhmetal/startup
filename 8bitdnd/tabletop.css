@@ -1,29 +1,48 @@
 .tabletop {
+    height: 100vh;
     display: flex;
     gap: 2em;
     justify-content: flex-start;
     align-items: flex-start;
 }
 
-
-.combat-grid {
-    border-spacing: 0;
-    border-collapse: collapse;
+.map {
+  position: relative;        /* anchor tokens inside */
+  flex: 1;                   /* take as much width as possible */
+  aspect-ratio: 1 / 1;
+  min-height: 500px;
+  height: calc(100vh - (var(--header-height) + var(--footer-height)));
+  background: url("battlemaps/battlemap_placeholder.jpg") center/contain no-repeat;
+  background-color: #000;
 }
 
-.combat-grid th{
-    padding: .5em;
+/* Tokens */
+.token {
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 2px solid black;
+  text-align: center;
+  line-height: 25px;
+  font-weight: bold;
+  font-family: monospace;
+  user-select: none;
+  cursor: grab;
+  background: rgba(255,255,255,0.85);
 }
 
-.combat-grid td { 
-    border: 2px solid; 
-    width: 3em; 
-    height: 3em; }
+.token.pc { background: rgba(0, 200, 255, 0.9); }
+.token.enemy { background: rgba(255, 80, 80, 0.9); }
 
-    
-
-.character-sheet {
-    width: 400px;      /* adjust to taste */
-    border: 2px solid;
-    padding: 1em;
+.character-sheet{
+  flex: 1;              /* take up the remaining space */
+  min-width: 300px;     /* don’t shrink too small */
+  max-width: 500px;     /* optional: cap size on big screens */
+  height: 100%;         /* match the map’s height */
+  overflow-y: auto;     /* scroll if content overflows */
+  background: #c6bebe;     /* retro dark background */
+  color: #000;          /* green text for retro look */
+  padding: 1em;
+  box-sizing: border-box;
 }

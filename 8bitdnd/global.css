@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+:root {
+  --header-height: 80px;   /* adjust to your actual header size */
+  --footer-height: 125px;   /* adjust to your actual footer size */
+}
+
 body {
   display: flex;
   flex-direction: column;
@@ -56,6 +61,7 @@ main {
 }
 
 footer {
+  height: var(--footer-height);
   display: flex;                
   flex-direction: column;       
   justify-content: left;      
