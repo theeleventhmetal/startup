@@ -86,3 +86,9 @@ td {
   padding: 0.5em;
   text-align: left;
 }
+
+@media (max-height: 600px) {
+  .character-sheet, .map {
+    margin: 0em 0em 0em 0em;
+  }
+}

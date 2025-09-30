@@ -17,7 +17,6 @@ header {
 
 /* Header navigation */
 header nav {
-  display: flex;
   justify-content: left;
   gap: 2rem;
   
@@ -35,6 +34,10 @@ header nav a {
   transition: all 0.2s ease;
   font-family: 'Press Start 2P', monospace;
   vertical-align: middle;
+}
+
+header nav .nav-right {
+    margin-left: auto
 }
 
 header nav a:not([href]) {
@@ -55,6 +58,18 @@ header hr {
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;              
+}
+
+header nav ul {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header nav ul .nav-right {
+  margin-left: auto;
 }
 
 main {
@@ -97,6 +112,34 @@ footer hr {
   }
   main {
     flex: 1 100vh;
+  }
+}
+
+.landscape-warning {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1E90FF;
+  color: #000;
+  text-align: center;
+  z-index: 9999;
+  font-size: 1.2em;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (orientation: portrait) and (max-width: 800px) {
+  .landscape-warning {
+    display: flex;
+  }
+  header,
+  .tabletop,
+  footer {
+    display: none !important;
   }
 }
 
