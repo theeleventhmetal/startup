@@ -41,7 +41,7 @@ header nav .nav-right {
 }
 
 header nav a:not([href]) {
-  background-color: #1E90FF; /* gold highlight */
+  background-color: #1E90FF;
   color: #000;
   border-color: #1E90FF;
 }
