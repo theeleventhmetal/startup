@@ -24,6 +24,8 @@ Most complicated thing so far is keeping the code looking clean, convention is n
 
 ## CSS
 
+AI is great for creating a skeleton of the layout you want to use but struggles with the specifics. It is useful to be familiar with the minutiae so that you can tweak things once you have a rough draft. Definitely split the CSS up into different files and then import all of them into one stylesheet for ease of reference and modularity. None of this matters anyways though because react is going to make a lot of this obsolete. 
+
 
 ## React Part 1: Routing
 
