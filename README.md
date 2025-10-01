@@ -65,12 +65,12 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
-- [ ] **Navigation elements** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing** - I did not complete this part of the deliverable.
-- [ ] **Application elements** - I did not complete this part of the deliverable.
-- [ ] **Application text content** - I did not complete this part of the deliverable.
-- [ ] **Application images** - I did not complete this part of the deliverable.
+- [x] **Header, footer, and main content body** - I added styling for all headers, footers, and main content
+- [x] **Navigation elements** - I added a main menu page as well as nav tags in the header on every page
+- [x] **Responsive to window resizing** - I used flex boxes and added a landscape warning to ensure that the app is used in landscape mode on any device
+- [x] **Application elements** - I fleshed out the tabletop page - the main part of the application
+- [x] **Application text content** - There is text on every page, mostly placeholder right now
+- [x] **Application images** - There is an image that automatically resizes on the tabletop page
 
 ## 🚀 React part 1: Routing deliverable
 
