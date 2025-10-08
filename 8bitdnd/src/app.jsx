@@ -18,7 +18,7 @@ export default function App() {
         <hr />
       </header>
 
-      <main>App compnents go here</main>
+      <main>App components go here</main>
 
     <footer>
       <hr />
@@ -26,7 +26,7 @@ export default function App() {
       <br />
       <a href="https://github.com/theeleventhmetal/startup.git">GitHub Repository</a>
     </footer>
-    
+
     </div>
   );
 }
