@@ -10,9 +10,12 @@ export function Tabletop() {
       </div>
       <div className="character-sheet">
         <table>
+          <thead>
           <tr>
             <th colSpan={2} style={{ textAlign: 'center' }}>Character Sheet</th>
           </tr>
+          </thead>
+          <tbody>
           <tr>
             <td>HP</td>
             <td style={{ textAlign: 'center' }}>12</td>
@@ -45,6 +48,7 @@ export function Tabletop() {
             <td>Charisma</td>
             <td style={{ textAlign: 'center' }}>16</td>
           </tr>
+          </tbody>
         </table>
       </div>
     </main>

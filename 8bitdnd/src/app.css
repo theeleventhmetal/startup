@@ -7,14 +7,21 @@
   min-width: 375px;
 }
 
-body {
+body, #root {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   overflow: hidden;
   background: #fdf5e6; /* off-white for normal pages */
   color: #2e2e2e;
   font-family: 'Press Start 2P', monospace;
+}
+
+#root > div {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {

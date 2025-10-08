@@ -7,13 +7,14 @@ import { Gmtools } from './gmtools/gmtools';
 import { Menu } from './menu/menu';
 import { About } from './about/about';
 import { Tabletop } from './tabletop/tabletop';
+import { Csheet } from './csheet/csheet';
 
 export default function App() {
   return (
     <BrowserRouter>
     <div>
       <header> 
-        <h1 className="main-header">About 8-Bit DND</h1> 
+        <h1 className="main-header">8-Bit DND</h1>
         <nav>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', gap: '1em' }}>
             <li><NavLink className='nav-link' to='/tabletop'>Tabletop</NavLink></li>
@@ -29,7 +30,7 @@ export default function App() {
       <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/tabletop' element={<Tabletop />} />
-        <Route path='/csheet' element={<Menu />} />
+        <Route path='/csheet' element={<Csheet />} />
         <Route path='/gmtools' element={<Gmtools />} />
         <Route path='/about' element={<About />} />
         <Route path='*' element={<NotFound />} />
