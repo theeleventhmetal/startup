@@ -29,7 +29,7 @@ header, footer {
   max-width: 60vw;
   height: 75vh;            
   aspect-ratio: 1 / 1;         
-  background: url("battlemaps/battlemap_placeholder.jpg") center center / contain no-repeat;
+  background: url("../../public/battlemaps/battlemap_placeholder.jpg") center center / contain no-repeat;
   background-color: #000;
   margin: 0em 0 0em 1em;       
   padding: 0;
