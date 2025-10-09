@@ -29,5 +29,7 @@ AI is great for creating a skeleton of the layout you want to use but struggles 
 
 ## React Part 1: Routing
 
+In the future, if it is known that you will be using react as your framework, make sure to implement your css and html in such a way that it will make it simple to port over. Or, if possible, just start from the beginning using react to save the hassle. 
+
 
 ## React Part 2: Reactivity
