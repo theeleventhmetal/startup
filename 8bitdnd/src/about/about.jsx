@@ -5,7 +5,7 @@ export function About(props) {
   const [imageUrl, setImageUrl] = React.useState('');
 
   React.useEffect(() => {
-    setImageUrl(`image_about.webp`);
+    setImageUrl(`image_about.jpg`);
   }, []);
 
   return (
@@ -17,11 +17,12 @@ export function About(props) {
       />
       
       <div className="about-text">
-        <h2>About 8-Bit DND</h2>
         <p>
-          Welcome to 8-Bit DND, where classic tabletop gaming meets retro pixel art aesthetics! 
-          Our platform brings the magic of Dungeons & Dragons to your digital screen with a 
-          nostalgic 8-bit twist.
+          8-Bit DND is all about making the world's most popular tabletop 
+          roll playing game more accessible.
+          With a simple interface, and styling reminiscent of the 
+          golden age of video games, our goal is to limit complexity
+          and get you immersed in a game of your creation as soon as possible.
         </p>
       </div>
     </main>
