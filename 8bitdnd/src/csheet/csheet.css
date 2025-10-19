@@ -5,44 +5,369 @@
   padding: 1em;
   gap: 1em;
   box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 #csheet-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1em;                      
-}
-
-#csheet-form input {
-  padding: 0.8em 1em;
-  width: 250px;
+  gap: 1.5em;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.8);
   border: 2px solid #2e2e2e;
   border-radius: 8px;
+  padding: 2em;
+  box-shadow: 4px 4px 0px #2e2e2e;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* top row styling */
+
+.top-row{
+  display: grid;
+  /* top row  box sizing */
+  grid-template-columns: 4fr 1fr 1fr 1fr 1fr 1fr; 
+  gap: 2em;
+  align-items: start;
+}
+
+.top-row label,
+.top-row input {
+  font-size: 0.6rem;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.9em;
+}
+
+.top-row label {
+  margin-bottom: 0.5em;
+  color: #2e2e2e;
+  text-transform: uppercase;
+}
+
+.top-row input {
+  padding: 0.5em;
+  border: 1px solid #2e2e2e;
+  border-radius: 4px;
+}
+
+/* Default landscape layout */
+.form-sections-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  gap: 2em;
+  align-items: start;
+}
+
+.left-column {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+/* Section styling - remove individual boxes */
+.section {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+  margin-bottom: 1.5em;
+}
+
+.section h2 {
+  font-size: 1rem;
+  margin-bottom: 1em;
+  text-align: left;
+  color: #2e2e2e;
+  text-transform: uppercase;
+  border-bottom: 2px solid #2e2e2e;
+  padding-bottom: 0.5em;
+}
+
+/* Form layout */
+.form-row {
+  display: flex;
+  gap: 1em;
+  margin-bottom: 1em;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 150px;
+}
+
+.form-group label {
+  font-size: 0.6rem;
+  margin-bottom: 0.5em;
+  color: #2e2e2e;
+  text-transform: uppercase;
+}
+
+/* Abilities grid layout - single column for left side */
+.abilities-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1em;
+  max-width: 50px;
+}
+
+.ability-group {
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8em 1em;
+  background: rgba(30, 144, 255, 0.1);
+  border: 2px solid #2e2e2e;
+  border-radius: 4px;
+  gap: 1em;
+  max-width: 90px;
+}
+
+.ability-group label {
+  font-size: 0.6rem;
+  margin: 0;
+  text-align: left;
+  color: #2e2e2e;
+  text-transform: uppercase;
+  flex: 1;
+}
+
+.ability-group input {
+  width: 60px !important;
+  text-align: center;
+  font-weight: bold;
+  flex: 0 0 auto;
+}
+
+/* Remove spinner arrows from number inputs */
+.ability-group input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.ability-group input[type="number"]::-webkit-outer-spin-button,
+.ability-group input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.modifier {
+  font-size: 0.4rem;
+  margin: 0;
+  color: #1E90FF;
+  font-weight: bold;
+  text-align: center;
+  flex: 0 0 auto;
+  min-width: 50px;
+}
+
+/* Input styling */
+#csheet-form input {
+  padding: 0.8em 1em;
+  width: 100%;
+  border: 2px solid #2e2e2e;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
   outline: none;
   transition: border-color 0.3s, box-shadow 0.3s;
+  background: #fff;
+  box-sizing: border-box;
 }
 
 #csheet-form input:focus {
   border-color: #1E90FF;
-  box-shadow: 0 0 8px #1E90FF;
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.3);
 }
 
-#csheet-form button {
-  padding: 0.8em 1.5em;
+#csheet-form input[type="number"] {
+  text-align: center;
+}
+
+/* Button styling */
+.save-button {
+  padding: 1em 2em;
   background-color: #2e2e2e;
   color: #fff;
-  border: none;
-  border-radius: 8px;
+  border: 2px solid #2e2e2e;
+  border-radius: 4px;
   cursor: pointer;
   font-family: 'Press Start 2P', monospace;
-  font-size: 0.9em;
-  transition: background-color 0.3s, transform 0.2s;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+  align-self: center;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px #000;
 }
 
-#csheet-form button:hover {
+.save-button:hover {
   background-color: #1E90FF;
-  transform: translateY(-2px);
+  border-color: #1E90FF;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+}
+
+/* Combat stats grid - similar to abilities */
+.combat-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  max-width: 300px;
+  
+}
+
+.combat-stat-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  background: rgba(30, 144, 255, 0.1);
+  border: 2px solid #2e2e2e;
+  border-radius: 4px;
+  gap: 0.5em;
+  aspect-ratio: 1; /* Makes it square */
+  min-height: 80px;
+  max-width: 80px;
+  
+}
+
+.combat-stat-box label {
+  font-size: 0.6rem;
+  margin: 0;
+  text-align: center;
+  color: #2e2e2e;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.combat-stat-box input {
+  width: 50px !important;
+  height: 30px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.7rem;
+  padding: 0.3em;
+  margin: 0;
+  border: 1px solid #2e2e2e;
+  border-radius: 4px;
+}
+
+/* Remove spinner arrows from combat stat inputs */
+.combat-stat-box input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+.combat-stat-box input[type="number"]::-webkit-outer-spin-button,
+.combat-stat-box input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Character Details Section */
+.character-details-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.detail-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.detail-group label {
+  font-size: 0.6rem;
+  color: #2e2e2e;
+  text-transform: uppercase;
+  font-family: 'Press Start 2P', monospace;
+  margin-bottom: 0.5em;
+}
+
+.detail-group textarea {
+  padding: 0.8em;
+  border: 2px solid #2e2e2e;
+  border-radius: 4px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.5rem;
+  background: #fff;
+  resize: vertical;
+  min-height: 60px;
+  line-height: 1.4;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.detail-group textarea:focus {
+  border-color: #1E90FF;
+  box-shadow: 0 0 8px rgba(30, 144, 255, 0.3);
+}
+
+.detail-group textarea::placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+/* Responsive adjustments for character details */
+@media (max-width: 700px) {
+  .detail-group textarea {
+    font-size: 0.4rem;
+    padding: 0.6em;
+  }
+}
+
+/* Responsive design - only collapse on smaller screens */
+@media (max-width: 700px) {
+  .form-sections-wrapper {
+    display: block !important;
+  }
+  
+  .ability-group {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.5em !important;
+  }
+  
+  .ability-group label {
+    text-align: center !important;
+    flex: none !important;
+  }
+  
+  .modifier {
+    text-align: center !important;
+    flex: none !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .form-group {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 400px) {
+  .abilities-grid {
+    grid-template-columns: 1fr !important;
+  }
 }
