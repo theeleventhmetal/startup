@@ -247,9 +247,65 @@ document.getElementById("animal").textContent = "crow";
 
 
 
+
+
 ## React Part 1: Routing
 
 In the future, if it is known that you will be using react as your framework, make sure to implement your css and html in such a way that it will make it simple to port over. Or, if possible, just start from the beginning using react to save the hassle. 
+
+## Additional Midterm notes
+
+# Ports
+- Port 443 is for HTTPS (secure web traffic), port 80 is for HTTP (unsecure web traffic), and port 22 is for SSH (secure remote access). 
+
+# Unix Command Cheat Sheet
+
+# Navigation & Directories
+
+| Command | Meaning | Example | Notes |
+|----------|----------|----------|-------|
+| `pwd` | Print Working Directory | `pwd` | Shows your current location. |
+| `cd` | Change Directory | `cd Documents` | Use `cd ..` to go up one level, `cd ~` to go home. |
+| `ls` | List Files | `ls -la` | `-l` = detailed list, `-a` = show hidden files. |
+| `mkdir` | Make Directory | `mkdir new_folder` | `-p` creates nested directories. |
+
+---
+
+# File Management
+
+| Command | Meaning | Example | Notes |
+|----------|----------|----------|-------|
+| `chmod` | Change File Permissions | `chmod +x script.sh` | Adds execute permission. Use numeric modes (e.g. `chmod 755 file`). |
+| `mv` | Move or Rename | `mv file.txt newname.txt` | Moves or renames files/folders. |
+| `rm` | Remove | `rm -rf folder/` | **Permanent delete!** `-r` for recursive, `-f` to skip confirmation. |
+
+---
+
+# Text Editors
+
+| Command | Meaning | Example | Notes |
+|----------|----------|----------|-------|
+| `vim` | Open file in Vim | `vim file.txt` | `i` = insert, `Esc` = exit insert mode, `:wq` = save & quit. |
+| `nano` | Open file in Nano | `nano file.txt` | `Ctrl+O` = save, `Ctrl+X` = exit. Easier than Vim. |
+
+---
+
+# System & Info
+
+| Command | Meaning | Example | Notes |
+|----------|----------|----------|-------|
+| `man` | Manual Page | `man ls` | Press `q` to quit. |
+| `ps` | Process Status | `ps aux` | Shows active processes. Use `grep` to filter (e.g. `ps aux | grep node`). |
+| `sudo` | Superuser Do | `sudo apt update` | Run commands as admin (will ask for password). |
+
+---
+
+# Networking
+
+| Command | Meaning | Example | Notes |
+|----------|----------|----------|-------|
+| `ssh` | Secure Shell | `ssh user@host` | Connects to a remote machine. |
+| `wget` | Web Get | `wget https://example.com/file.zip` | Downloads a file from the web. |
 
 
 ## React Part 2: Reactivity
