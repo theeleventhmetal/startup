@@ -34,6 +34,7 @@ header, footer {
   margin: 0em 0 0em 1em;       
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 td {
@@ -72,6 +73,8 @@ td {
   margin: 0em 1 0em 0;
   padding: 0em;
   box-sizing: border-box;
+  box-shadow: 6px 6px 0px #2e2e2e;
+  border-radius: 8px;
 }
 
 .character-sheet table {

@@ -28,7 +28,7 @@ export function CharacterCard({ character, isEditable = false }) {
             <span>{character.speed}</span>
           </div>
           <div className="stat-box">
-            <label>Init</label>
+            <label>Initiative</label>
             <span>{character.initiative >= 0 ? '+' : ''}{character.initiative}</span>
           </div>
         </div>
