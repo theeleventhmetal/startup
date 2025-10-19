@@ -57,7 +57,7 @@
 /* Default landscape layout */
 .form-sections-wrapper {
   display: grid;
-  grid-template-columns: 1fr 10fr;
+  grid-template-columns: 1fr 6fr;
   gap: 2em;
   align-items: start;
 }

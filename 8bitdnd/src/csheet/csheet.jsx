@@ -83,6 +83,12 @@ export function Csheet() {
 
   return (
 
+    <>
+
+    <div className="landscape-warning">
+          For best experience, please rotate your device to landscape mode.
+    </div>
+
 
     <div className="csheet-container">
       <form id="csheet-form" onSubmit={handleSubmit}>
@@ -232,5 +238,6 @@ export function Csheet() {
         <button type="submit" className="save-button">Save Character</button>
       </form>
     </div>
+    </>
   );
 }
