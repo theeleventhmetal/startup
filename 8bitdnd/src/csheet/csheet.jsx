@@ -78,7 +78,7 @@ export function Csheet() {
     const tabletopData = getTabletopData(character);
     localStorage.setItem("tabletopCharacter", JSON.stringify(tabletopData));
     
-    navigate("/display");
+    navigate("/tabletop");
   };
 
   return (
@@ -235,7 +235,7 @@ export function Csheet() {
           </div>
         </div>
 
-        <button type="submit" className="save-button">Save Character</button>
+        <button type="submit" className="save-button">Save to Tabletop</button> 
       </form>
     </div>
     </>
