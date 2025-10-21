@@ -44,21 +44,61 @@ td {
 /* Tokens */
 .token {
   position: absolute;
-  width: 25px;
-  height: 25px;
-  border-radius: 50%;
-  border: 2px solid black;
-  text-align: center;
-  line-height: 25px;
-  font-weight: bold;
-  font-family: monospace;
-  user-select: none;
   cursor: grab;
-  background: rgba(255,255,255,0.85);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  user-select: none;
+  border: 2px solid #2e2e2e;
+  box-shadow: 2px 2px 0px #2e2e2e;
 }
 
-.token.pc { background: rgba(0, 200, 255, 0.9); }
-.token.enemy { background: rgba(255, 80, 80, 0.9); }
+.token.pc {
+  background-color: #1E90FF;
+}
+
+.token.enemy {
+  background-color: #FF4444;
+}
+
+.token:active {
+  cursor: grabbing;
+}
+
+.token:hover {
+  transform: scale(1.05);
+  transition: transform 0.1s ease;
+}
+
+.drag-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid #2e2e2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+}
+
+.drag-image.pc {
+  background-color: #1E90FF;
+}
+
+.drag-image.enemy {
+  background-color: #FF4444;
+}
 
 .character-sheet {
   flex: 1;
