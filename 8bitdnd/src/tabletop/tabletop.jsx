@@ -10,6 +10,18 @@ export function Tabletop() {
   });
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
+  // Add these for better WebSocket preparation:
+  const [isConnected, setIsConnected] = useState(false);
+  const [roomId, setRoomId] = useState(null);
+  const [otherPlayers, setOtherPlayers] = useState([]);
+
+  // Custom hook for future WebSocket integration:
+  const useWebSocket = (url) => {
+    const [socket, setSocket] = useState(null);
+    // ... WebSocket logic will go here
+    return socket;
+  };
+
   useEffect(() => {
     try {
       const savedCharacter = localStorage.getItem("tabletopCharacter");
@@ -18,6 +30,13 @@ export function Tabletop() {
       }
     } catch (error) {
       console.error("Error loading character:", error);
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedTokens = localStorage.getItem("tokenPositions");
+    if (savedTokens) {
+      setTokens(JSON.parse(savedTokens));
     }
   }, []);
 
@@ -51,10 +70,14 @@ export function Tabletop() {
     const newLeft = e.clientX - mapRect.left - dragOffset.x;
     const newTop = e.clientY - mapRect.top - dragOffset.y;
 
-    setTokens(prevTokens => ({
-      ...prevTokens,
-      [id]: { top: newTop, left: newLeft },
-    }));
+    setTokens(prevTokens => {
+      const newTokens = {
+        ...prevTokens,
+        [id]: { top: newTop, left: newLeft },
+      };
+      localStorage.setItem("tokenPositions", JSON.stringify(newTokens));
+      return newTokens;
+    });
   };
 
   return (
