@@ -85,7 +85,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **All functionality implemented or mocked out** - I implemented a rough draft of the essential features for the site, including a chracter card that updates from local storage based on the character sheet page, login authentication, a fleshed out about page, and tokens that can be dragged and dropped
-- [x] **Hooks** - I used useState and useEffect hooks on the tabletop and csheet pages for storing object states. The useState hooks on tabletop will eventually be used to integrate websockets for live updating
+- [x] **Hooks** - I used useState and useEffect hooks on the tabletop and csheet pages for storing object states. The useState hooks on tabletop will eventually be used to integrate websockets for live token position updates
 
 ## 🚀 Service deliverable
 
