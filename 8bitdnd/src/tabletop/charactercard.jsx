@@ -1,7 +1,14 @@
 import React from 'react';
 
 export function CharacterCard({ character, isEditable = false }) {
-  if (!character) return <div>No character data</div>;
+  if (!character) return (
+    <div className="character-card">
+      <div className="stats-section" style={{ textAlign: 'center', padding: '20px' }}>
+        <p>No character data available.</p>
+        <p>Go to "Character Sheet" to create or update your character.</p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="character-card">
