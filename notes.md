@@ -160,13 +160,13 @@ document.getElementById("btn").addEventListener("click", () => {
 
 A **Promise** in JavaScript represents a value that may be available now, later, or never. It’s used for handling **asynchronous operations** — like fetching data from a server.
 
-### 🧠 Promise States
+# 🧠 Promise States
 A Promise can be in one of three states:
 1. **Pending** – the operation hasn’t completed yet.
 2. **Fulfilled** – the operation completed successfully.
 3. **Rejected** – the operation failed.
 
-### ✅ Basic Example
+# ✅ Basic Example
 ```js
 const myPromise = new Promise((resolve, reject) => {
   let success = true;
@@ -189,7 +189,7 @@ myPromise
 "Promise finished"
 ```
 
-### ⚙️ Using Promises with Asynchronous Functions
+# ⚙️ Using Promises with Asynchronous Functions
 Example with `setTimeout`:
 ```js
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
@@ -198,7 +198,7 @@ delay(1000)
   .then(() => console.log("1 second later..."));
 ```
 
-### 🌐 Fetch Example
+# 🌐 Fetch Example
 ```js
 fetch("https://api.example.com/data")
   .then(response => response.json())
@@ -206,7 +206,7 @@ fetch("https://api.example.com/data")
   .catch(error => console.error("Error:", error));
 ```
 
-### 🧩 Async / Await Syntax
+# 🧩 Async / Await Syntax
 A cleaner way to work with Promises:
 ```js
 async function getData() {
