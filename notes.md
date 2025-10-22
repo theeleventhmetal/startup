@@ -307,5 +307,9 @@ In the future, if it is known that you will be using react as your framework, ma
 | `ssh` | Secure Shell | `ssh user@host` | Connects to a remote machine. |
 | `wget` | Web Get | `wget https://example.com/file.zip` | Downloads a file from the web. |
 
+## Other
+- By default, the HTML `<span>` element has a CSS display property value of: inline
+- A DNS A record can only point to an IP address, not another A record.
+- `===` is strict equality, type and value
 
 ## React Part 2: Reactivity
