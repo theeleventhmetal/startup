@@ -9,6 +9,38 @@ export function Csheet() {
   const getModifier = (score) => {
     return Math.floor((score - 10) / 2);
   };
+
+  React.useEffect(() => {
+    console.log('🔍 Making API request...');
+    
+    fetch('/api/charactercard', {
+      credentials: 'include'
+    })
+      .then((response) => {
+        console.log('📡 Response status:', response.status);
+        console.log('📡 Response headers:', Object.fromEntries(response.headers));
+        
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      })
+      .then((character) => {
+        console.log('✅ Character loaded from API:', character);
+        if (character) {
+          setCharacter(character);
+        }
+      })
+      .catch((error) => {
+        console.log('❌ API Error:', error.message);
+        console.log('📱 Using localStorage fallback');
+        
+        const savedCharacter = localStorage.getItem('character');
+        if (savedCharacter) {
+          setCharacter(JSON.parse(savedCharacter));
+        }
+      });
+  }, []);
   
   const [character, setCharacter] = useState({
     name: "",

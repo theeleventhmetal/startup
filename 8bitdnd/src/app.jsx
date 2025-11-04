@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './app.css';
 
-import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import { Login } from './login/login';
 import { Gmtools } from './gmtools/gmtools';
 import { About } from './about/about';
@@ -64,11 +64,15 @@ function AppContent() {
         <Route 
           path='/' 
           element={
-            <Login
-              userName={userName}
-              authState={authState}
-              onAuthChange={onAuthChange}
-            />
+            authState === AuthState.Authenticated ? (
+              <Navigate to="/tabletop" replace />
+            ) : (
+              <Login
+                userName={userName}
+                authState={authState}
+                onAuthChange={onAuthChange}
+              />
+            )
           } 
         />
         <Route path='/tabletop' element={<Tabletop />} />

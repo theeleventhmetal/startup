@@ -5,36 +5,38 @@ export function Unauthenticated(props) {
   const [userName, setUserName] = React.useState(props.userName || '');
   const [password, setPassword] = React.useState('');
   const [displayError, setDisplayError] = React.useState(null);
-  const navigate = useNavigate();
 
   async function loginUser() {
-    if (!userName || !password) return;
-    
-    try {
-      localStorage.setItem('userName', userName);
-      props.onLogin(userName);
-      navigate('/tabletop');
-    } catch (error) {
-      setDisplayError('Login failed. Please try again.');
-    }
+    loginOrCreate(`/api/auth/login`);
   }
+    
 
   async function createUser() {
-    if (!userName || !password) return;
+    loginOrCreate(`/api/auth/create`);
+  }
     
-    try {
+
+  async function loginOrCreate(endpoint) {
+    const response = await fetch(endpoint, {
+      method: 'post',
+      body: JSON.stringify({ email: userName, password: password }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if (response?.status === 200) {
       localStorage.setItem('userName', userName);
       props.onLogin(userName);
-      navigate('/tabletop');
-    } catch (error) {
-      setDisplayError('Account creation failed. Please try again.');
+    } else {
+      const body = await response.json();
+      setDisplayError(`⚠ Error: ${body.msg}`);
     }
   }
 
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     loginUser();
-  }
+  };
 
   return (
     <>
