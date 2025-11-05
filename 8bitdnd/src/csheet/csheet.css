@@ -415,5 +415,6 @@
 
 .generate-icon-button:hover {
   background-color: #1E90FF;
-  /* No transform - just color change */
+  transform: translateY(-50%) translate(-1px, -1px); /* Keep centered, small move */
+  box-shadow: 2px 2px 0px #000; /* Smaller shadow */
 }
