@@ -54,6 +54,21 @@
   border-radius: 4px;
 }
 
+.generate-name-button {
+  background-color: #9B59B6;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-left: 10px;
+}
+
+.generate-name-button:hover {
+  background-color: #8E44AD;
+}
+
 /* Default landscape layout */
 .form-sections-wrapper {
   display: grid;
@@ -370,4 +385,35 @@
   .abilities-grid {
     grid-template-columns: 1fr !important;
   }
+}
+
+/* Input with icon styling */
+.input-with-icon {
+  position: relative;
+}
+
+.input-with-icon input {
+  padding-right: 40px;
+  width: 100%;
+}
+
+.generate-icon-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: white;
+  border: none;
+  font-size: 10px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  padding: 4px;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.generate-icon-button:hover {
+  background-color: #1E90FF;
+  /* No transform - just color change */
 }

@@ -113,6 +113,30 @@ export function Csheet() {
     navigate("/tabletop");
   };
 
+  const generateName = async () => {
+    try {
+      const response = await fetch("https://fantasyname.lukewh.com/");
+      
+      if (response.ok){
+        console.log("Successfully retrieved from fantasyname API")
+        const name = await response.text();
+        setCharacter(prev => ({
+        ...prev,
+        name: name.trim()
+        }));
+      }
+      else {
+      throw new Error(`HTTP ${response.status}`);
+    }
+    } catch (error) {
+      console.error('Name generation failed:', error);
+    // Fallback to local name generation
+    const fallbackNames = ["Aelar", "Aramil", "Berris", "Dayereth", "Enna"];
+    const randomName = fallbackNames[Math.floor(Math.random() * fallbackNames.length)];
+    setCharacter(prev => ({ ...prev, name: randomName }));
+    }
+  }
+
   return (
 
     <>
@@ -130,7 +154,22 @@ export function Csheet() {
 
           <div className="form-group">
             <label>Character Name</label>
-            <input name="name" value={character.name} onChange={handleChange}/>
+            <div className="input-with-icon">
+              <input 
+                name="name" 
+                value={character.name} 
+                onChange={handleChange}
+                placeholder="Enter character name..."
+              />
+              <button 
+                type="button" 
+                className="generate-icon-button"
+                onClick={generateName}
+                title="Generate random name"
+              >
+                Random
+              </button>
+            </div>
           </div>
           <div className="form-group">
             <label>Class</label>
