@@ -5,8 +5,17 @@ const uuid = require('uuid');
 const app = express();
 const authCookieName = 'token';
 
-let users = [];
-let userCharacters = {}; // Store character data per user
+// Import database functions
+const {
+  getUser,
+  getUserByToken,
+  addUser,
+  updateUser,
+  addCharacter,
+  updateCharacter,
+  getCharacter
+} = require('./database.js');
+
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
 
 app.use(express.json());
@@ -81,24 +90,24 @@ const verifyAuth = async (req, res, next) => {
   }
 };
 
-// Get user's character data
+// Update character endpoints
 apiRouter.get('/charactercard', verifyAuth, async (req, res) => {
-  // The user is already verified by middleware, just find them
   const user = await findUser('token', req.cookies[authCookieName]);
-  const characterData = userCharacters[user.email] || null;
   
-  console.log('User:', user.email);
-  console.log('Sending character data:', characterData);
-  
-  res.json(characterData);
+  if (user) {
+    const characterData = await getCharacter(user.email);
+    console.log('Sending character data:', characterData);
+    res.json(characterData);
+  } else {
+    res.status(401).send({ msg: 'Unauthorized' });
+  }
 });
 
-// Save user's character data
 apiRouter.post('/charactercard', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   
   if (user) {
-    userCharacters[user.email] = req.body;
+    await updateCharacter(user.email, req.body);
     res.json({ msg: 'Character saved successfully', character: req.body });
   } else {
     res.status(401).send({ msg: 'Unauthorized' });
@@ -115,25 +124,27 @@ app.use((_req, res) => {
   res.sendFile('index.html', { root: 'public' });
 });
 
-
-//async functions
-async function createUser(email, password) {
-  const passwordHash = await bcrypt.hash(password, 10);
-
-  const user = {
-    email: email,
-    password: passwordHash,
-    token: uuid.v4(),
-  };
-  users.push(user);
-
-  return user;
+// Update your existing functions
+async function findUser(by, value) {
+  if (by === 'email') {
+    return await getUser(value);
+  } else if (by === 'token') {
+    return await getUserByToken(value);
+  }
+  return null;
 }
 
-async function findUser(field, value) {
-  if (!value) return null;
-
-  return users.find((u) => u[field] === value);
+async function createUser(email, password) {
+  const hashedPassword = await bcrypt.hash(password, 12);
+  const user = {
+    email: email,
+    password: hashedPassword,
+    token: uuid.v4(),
+    createdAt: new Date()
+  };
+  
+  await addUser(user);
+  return user;
 }
 
 // setAuthCookie in the HTTP response
