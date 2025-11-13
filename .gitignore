@@ -17,3 +17,8 @@ build/
 # OS and editor junk
 .DS_Store
 .vscode/
+
+# Database configuration (contains sensitive credentials)
+.dbConfig
+dbConfig.json
+service/dbConfig.json
