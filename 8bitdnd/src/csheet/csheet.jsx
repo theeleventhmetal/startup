@@ -63,7 +63,7 @@ export function Csheet() {
     armorClass: 10,
     speed: 30,
     proficiencyBonus: 2,
-    initiative: 0,
+    initiative: +2,
     backstory: "",
     personalityTraits: "",
     ideals: "",
@@ -183,7 +183,7 @@ export function Csheet() {
                   name="name" 
                   value={character.name} 
                   onChange={handleChange}
-                  placeholder="Enter character name..."
+                  placeholder={character.name || "Enter character name..."}
                 />
                 <button 
                   type="button" 
@@ -197,23 +197,51 @@ export function Csheet() {
             </div>
             <div className="form-group">
               <label>Class</label>
-              <input name="class" value={character.class} onChange={handleChange}/>
+              <input 
+                name="class" 
+                value={character.class} 
+                onChange={handleChange}
+                placeholder={character.class || "Class"}
+              />
             </div>
             <div className="form-group">
               <label>Level</label>
-              <input type="number" name="level" min="1" max="20" value={character.level} onChange={handleChange}/>
+              <input 
+                type="number" 
+                name="level" 
+                min="1" 
+                max="20" 
+                value={character.level} 
+                onChange={handleChange}
+                placeholder={character.level || "Level"}
+              />
             </div>
             <div className="form-group">
               <label>Alignment</label>
-              <input name="alignment" value={character.alignment} onChange={handleChange} />
+              <input 
+                name="alignment" 
+                value={character.alignment} 
+                onChange={handleChange} 
+                placeholder={character.alignment || "Alignment"}
+              />
             </div>
             <div className="form-group">
               <label>Race</label>
-              <input name="race" value={character.race} onChange={handleChange} />
+              <input 
+                name="race" 
+                value={character.race} 
+                onChange={handleChange} 
+                placeholder={character.race || "Race"}
+              />
             </div>
             <div className="form-group">
               <label>Background</label>
-              <input name="background" value={character.background} onChange={handleChange} />
+              <input 
+                name="background" 
+                value={character.background} 
+                onChange={handleChange} 
+                placeholder={character.background || "Background"}
+              />
             </div>
 
           </div>
@@ -226,32 +254,80 @@ export function Csheet() {
                 <div className="abilities-grid">
                   <div className="ability-group">
                     <label>Strength</label>
-                    <input type="number" name="strength" min="1" max="20" value={character.strength} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="strength" 
+                      min="1" 
+                      max="20" 
+                      value={character.strength} 
+                      onChange={handleChange} 
+                      placeholder={character.strength || ""}
+                    />
                     <div className="modifier">Mod: {getModifier(character.strength) >= 0 ? '+' : ''}{getModifier(character.strength)}</div>
                   </div>
                   <div className="ability-group">
                     <label>Dexterity</label>
-                    <input type="number" name="dexterity" min="1" max="20" value={character.dexterity} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="dexterity" 
+                      min="1" 
+                      max="20" 
+                      value={character.dexterity} 
+                      onChange={handleChange} 
+                      placeholder={character.dexterity || ""}
+                    />
                     <div className="modifier">Mod: {getModifier(character.dexterity) >= 0 ? '+' : ''}{getModifier(character.dexterity)}  </div>
                   </div>
                   <div className="ability-group">
                     <label>Constitution</label>
-                    <input type="number" name="constitution" min="1" max="20" value={character.constitution} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="constitution" 
+                      min="1" 
+                      max="20" 
+                      value={character.constitution} 
+                      onChange={handleChange} 
+                      placeholder={character.constitution || ""}
+                    />
                     <div className="modifier">Mod: {getModifier(character.constitution) >= 0 ? '+' : ''}{getModifier(character.constitution)}</div>
                   </div>
                   <div className="ability-group">
                     <label>Intelligence</label>
-                    <input type="number" name="intelligence" min="1" max="20" value={character.intelligence} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="intelligence" 
+                      min="1" 
+                      max="20" 
+                      value={character.intelligence} 
+                      onChange={handleChange} 
+                      placeholder={character.intelligence || ""}
+                    />
                     <div className="modifier">Mod: {getModifier(character.intelligence) >= 0 ? '+' : ''}{getModifier(character.intelligence)}</div>
                   </div>
                   <div className="ability-group">
                     <label>Wisdom</label>
-                    <input type="number" name="wisdom" min="1" max="20" value={character.wisdom} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="wisdom" 
+                      min="1" 
+                      max="20" 
+                      value={character.wisdom} 
+                      onChange={handleChange} 
+                      placeholder={character.wisdom || ""}
+                    />
                     <div className="modifier">Mod: {getModifier(character.wisdom) >= 0 ? '+' : ''}{getModifier(character.wisdom)}</div>
                   </div>
                   <div className="ability-group">
                     <label>Charisma</label>
-                    <input type="number" name="charisma" min="1" max="20" value={character.charisma} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="charisma" 
+                      min="1" 
+                      max="20" 
+                      value={character.charisma} 
+                      onChange={handleChange} 
+                      placeholder={character.charisma || ""}
+                    />
                     <div className="modifier">Mod: {getModifier(character.charisma) >= 0 ? '+' : ''}{getModifier(character.charisma)}</div>
                   </div>
                 </div>
@@ -268,19 +344,46 @@ export function Csheet() {
                 <div className="combat-stats-grid">
                   <div className="combat-stat-box">
                     <label>Armor Class</label>
-                    <input type="number" name="armorClass" min="1" value={character.armorClass} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="armorClass" 
+                      min="1" 
+                      value={character.armorClass} 
+                      onChange={handleChange} 
+                      placeholder={character.armorClass || "Armor Class"}
+                    />
                   </div>
                   <div className="combat-stat-box">
                     <label>Initiative</label>
-                    <input type="number" name="initiative" value={character.initiative} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="initiative" 
+                      value={character.initiative} 
+                      onChange={handleChange} 
+                      placeholder={character.initiative || "+2"}
+                    />
                   </div>
                   <div className="combat-stat-box">
                     <label>Speed</label>
-                    <input type="number" name="speed" min="0" value={character.speed} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="speed" 
+                      min="0" 
+                      value={character.speed} 
+                      onChange={handleChange} 
+                      placeholder={character.speed || "Speed"}
+                    />
                   </div>
                   <div className="combat-stat-box">
                     <label>Proficiency Bonus</label>
-                    <input type="number" name="proficiencyBonus" min="0" value={character.proficiencyBonus} onChange={handleChange} />
+                    <input 
+                      type="number" 
+                      name="proficiencyBonus" 
+                      min="0" 
+                      value={character.proficiencyBonus} 
+                      onChange={handleChange} 
+                      placeholder={character.proficiencyBonus || "Proficiency Bonus"}
+                    />
                   </div>
                 </div>
               </div>
@@ -296,7 +399,7 @@ export function Csheet() {
                       value={character.backstory} 
                       onChange={handleChange}
                       rows="4"
-                      placeholder="Describe your character's history..."
+                      placeholder={character.backstory || "Backstory"}
                     />
                   </div>
                   <div className="detail-group">
@@ -306,7 +409,7 @@ export function Csheet() {
                       value={character.personalityTraits} 
                       onChange={handleChange}
                       rows="3"
-                      placeholder="How does your character act and think?"
+                      placeholder={character.personalityTraits || "Personality Traits"}
                     />
                   </div>
                   <div className="detail-group">
@@ -316,7 +419,7 @@ export function Csheet() {
                       value={character.ideals} 
                       onChange={handleChange}
                       rows="2"
-                      placeholder="What does your character look like?"
+                      placeholder={character.ideals || "Physical Traits"}
                     />
                   </div>
                 </div>
