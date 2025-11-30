@@ -1,0 +1,126 @@
+.gmtools-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1em;
+  gap: 1em;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 1600px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.row{
+  display: grid;
+  /* top row  box sizing */
+  grid-template-columns: 1fr 1fr;
+  gap: 2em;
+  align-items: start;
+}
+
+.host-content{
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 2em;
+  align-items: start;
+}
+
+.game-id-box{
+  background-color: #fff;
+  border: 2px solid #4a4a4a;
+  border-radius: 8px;
+  padding: 1.5em;
+  min-height: 100px;
+  max-height: 300px;
+  overflow-y: auto;
+  box-shadow: 4px 4px 0px #000;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.host-table-button {
+  padding: 1em 2em;
+  background-color: #2e2e2e;
+  color: #fff;
+  border: 2px solid #2e2e2e;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.8rem;
+  transition: all 0.3s;
+  align-self: center;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0px #000;
+}
+
+.host-table-button:hover {
+  background-color: #1E90FF;
+  border-color: #1E90FF;
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px #000;
+}
+
+.participants-box {
+  background-color: #fff;
+  border: 2px solid #4a4a4a;
+  border-radius: 8px;
+  padding: 1.5em;
+  min-height: 300px;
+  max-height: 500px;
+  overflow-y: auto;
+  box-shadow: 4px 4px 0px #000;
+  font-family: 'Press Start 2P', monospace;
+}
+
+.participants-header {
+  color: #000;
+  font-size: 0.9rem;
+  margin-bottom: 1em;
+  text-align: center;
+  border-bottom: 2px solid #4a4a4a;
+  padding-bottom: 0.5em;
+}
+
+.participants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8em;
+}
+
+.participant-item {
+  display: flex;
+  align-items: center;
+  padding: 0.8em;
+  background-color: #1a1a1a;
+  border: 1px solid #4a4a4a;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.participant-item:hover {
+  background-color: #3a3a3a;
+  transform: translateX(2px);
+}
+
+.participant-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #1E90FF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  font-size: 0.7rem;
+  margin-right: 0.8em;
+  border: 2px solid #4a4a4a;
+}
+
+.participant-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2em;
+}

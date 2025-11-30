@@ -6,14 +6,19 @@ export function Tabletop() {
   const [character, setCharacter] = useState(null);
   const [tokens, setTokens] = useState({
     pc: { top: 50, left: 50 },
-    enemy: { top: 100, left: 100 },
   });
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
   // Add these for better WebSocket preparation:
+  const [showCustomizeModal, setShowCustomizeModal] = useState(false);
+  const [tokenColor, setTokenColor] = useState("#1E90FF");
+  const [tokenLabel, setTokenLabel] = useState("PC");
+  const [showJoinTable, setShowJoinTable] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [roomId, setRoomId] = useState(null);
   const [otherPlayers, setOtherPlayers] = useState([]);
+  const [joinRoomCode, setJoinRoomCode] = useState("");
+  const [tokenShape, setTokenShape] = useState("circle");
 
   // Custom hook for future WebSocket integration:
   const useWebSocket = (url) => {
@@ -80,6 +85,18 @@ export function Tabletop() {
     });
   };
 
+  const triggerJoinTable = () => {
+    setShowJoinTable(true);
+  };
+
+  const handleJoinTable = () => {
+  setRoomId(joinRoomCode);
+  setShowJoinTable(false);
+  setJoinRoomCode("");
+  };
+
+
+
   return (
     <>
       <div className="landscape-warning">
@@ -91,25 +108,115 @@ export function Tabletop() {
           onDragOver={handleDragOver}
           onDrop={handleDrop}
         >
-          {Object.entries(tokens).map(([id, pos]) => (
+          {/* Only render the player character token */}
+          {tokens.pc && (
             <div
-              key={id}
-              className={`token ${id}`}
+              key="pc"
+              className={`token pc ${tokenShape}`}
               style={{
-                top: `${pos.top}px`,
-                left: `${pos.left}px`,
+                top: `${tokens.pc.top}px`,
+                left: `${tokens.pc.left}px`,
+                backgroundColor: tokenColor,
+                borderRadius: tokenShape === "circle" ? "50%" : "8px",
               }}
               draggable
-              onDragStart={(e) => handleDragStart(id, e)}
+              onDragStart={e => handleDragStart("pc", e)}
             >
-              {id === 'pc' ? 'PC' : 'E'}
+              {tokenLabel}
             </div>
-          ))}
+          )}
         </div>
-        
-        <div className="character-sheet">
+
+        <div className="right-screen">
+          <div className="character-sheet">
           <CharacterCard character={character} />
+          </div>
+
+          <div className="bottom-buttons">
+            <button
+              className="customize-token-button"
+              onClick={() => setShowCustomizeModal(true)}
+            >
+              Customize Token
+            </button>
+            <button
+              type="button"
+              className="join-table-button"
+              onClick={triggerJoinTable}
+            >
+              {roomId ? "Leave Table" : "Join Table"}
+            </button>
+          </div>
+
+          
         </div>
+
+        
+
+        {showJoinTable && (
+          <div className="join-table-overlay">
+            <div className="join-table-modal">
+              <div className="form-group">
+                <label>Enter Table ID</label>
+                <input 
+                type="text"
+                value={joinRoomCode}
+                onChange={e => setJoinRoomCode(e.target.value)}
+                />
+                <button
+                type="button"
+                className="close-join-button"
+                onClick={handleJoinTable}>
+                  Submit
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {showCustomizeModal && (
+          <div className="join-table-overlay" onClick={() => setShowCustomizeModal(false)}>
+            <div className="join-table-modal" onClick={e => e.stopPropagation()}>
+              <div className="form-group">
+                <label>Token Label</label>
+                <input
+                  type="text"
+                  value={tokenLabel}
+                  onChange={e => setTokenLabel(e.target.value)}
+                  maxLength = {2}
+                />
+
+                <label>Token Color</label>
+                <input
+                  type="color"
+                  value={tokenColor}
+                  onChange={e => setTokenColor(e.target.value)}
+                  style={{ width: "60px", height: "40px", border: "none", background: "none" }}
+                />
+
+                <label>Shape</label>
+                <select
+                  value={tokenShape}
+                  onChange={e => setTokenShape(e.target.value)}
+                >
+                  <option value="circle">Circle</option>
+                  <option value="square">Square</option>
+                </select>
+
+                <button
+                  type="button"
+                  className="close-join-button"
+                  onClick={() => {
+                    // Save customization to state/localStorage/server as needed
+                    setShowCustomizeModal(false);
+                  }}
+                >
+                  Save
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
       </main>
     </>
   );

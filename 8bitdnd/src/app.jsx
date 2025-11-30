@@ -43,7 +43,7 @@ function AppContent() {
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', gap: '1em' }}>
               <li><NavLink className='nav-link' to='/tabletop'>Tabletop</NavLink></li>
               <li><NavLink className='nav-link' to='/csheet'>Character Sheet</NavLink></li>
-              {/* <li><NavLink className='nav-link' to='/gmtools'>GM Tools</NavLink></li> */}
+              <li><NavLink className='nav-link' to='/gmtools'>GM Tools</NavLink></li>
               <li><NavLink className='nav-link' to='/about'>About</NavLink></li>
               <li className='nav-right'>
                 <NavLink 
