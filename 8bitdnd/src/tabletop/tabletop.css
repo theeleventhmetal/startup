@@ -94,18 +94,19 @@ td {
   color: white;
   font-size: 10px;
   font-weight: bold;
+  box-shadow: 2px 2px 0px #2e2e2e;
+  background: #1E90FF; /* Default, will be overridden inline for custom color */
   position: absolute;
   top: -1000px;
   left: -1000px;
+  user-select: none;
+  pointer-events: none;
 }
 
 .drag-image.pc {
-  background-color: #1E90FF;
+  background-color: #94999e;
 }
 
-.drag-image.enemy {
-  background-color: #FF4444;
-}
 
 .character-sheet {
   flex: 1;
@@ -165,6 +166,105 @@ td {
   box-shadow: 4px 4px 0px #000;
 }
 
+.customize-token-row{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5em; /* Increase gap between columns */
+  align-items: start;
+  margin-bottom: 2em; /* Add space below the row */
+}
+
+.customize-token-row > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.name-shape{
+  display: grid;
+  gap: 1em;
+  align-items: start;
+}
+
+.customize-token-modal {
+  background: #c6bebe;;
+  border: 4px solid #000;
+  border-radius: 12px;
+  padding: 30px;
+  text-align: center;
+  animation: popIn 0.3s ease-out;
+  max-width: 700px;    /* Increased from 90vw or set to a fixed px value */
+  max-height: 90vh;
+  width: 400px;     
+  height: 300px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical centering */
+  align-items: center;     /* horizontal centering */
+}
+
+.customize-token-modal input[type="text"],
+.customize-token-modal input[type="number"] {
+  font-size: 2rem;
+  padding: 0.5em 1em;
+  border: 2px solid #2e2e2e;
+  border-radius: 6px;
+  margin-bottom: 0.4em;
+  width: 80%;
+  box-sizing: border-box;
+  background: #fff;
+  color: #2e2e2e;
+  font-family: 'Press Start 2P', monospace;
+}
+
+/* Dropdown (select) styling for the token customization modal */
+.customize-token-modal select {
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  border: 2px solid #2e2e2e;
+  border-radius: 6px;
+  margin-bottom: 0.4em;
+  width: 80%;
+  box-sizing: border-box;
+  background: #fff;
+  color: #2e2e2e;
+  font-family: 'Press Start 2P', monospace;
+  appearance: none;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.customize-token-modal select:focus {
+  border-color: #1E90FF;
+}
+
+/* Option styling (limited by browser support, but helps for some browsers) */
+.customize-token-modal select option {
+  font-size: 2rem;
+  font-family: 'Press Start 2P', monospace;
+  color: #2e2e2e;
+  background: #fff;
+}
+
+/* Center all elements in the token customization modal */
+.customize-token-modal .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.customize-token-modal .form-group > *:not(:last-child) {
+  margin-bottom: 1.2em; /* Add space between form-group children except last */
+}
+
+.customize-token-modal label {
+  margin-bottom: 0.6em;
+  font-size: 1.2rem;
+}
 
 .join-table-button {
   padding: 1em 2em;
@@ -206,7 +306,7 @@ td {
   max-width: 700px;    /* Increased from 90vw or set to a fixed px value */
   max-height: 90vh;
   width: 400px;     
-  height: 170px; 
+  height: 250px; 
   display: flex;
   flex-direction: column;
   justify-content: center; /* vertical centering */
@@ -272,4 +372,33 @@ td {
 
 .join-table-modal .form-group input[type="text"] {
   font-size: 2rem !important;
+}
+
+.customize-token-modal .form-group label {
+  font-size: 1.2rem !important;
+}
+.customize-token-modal .form-group input[type="text"] {
+  font-size: 1rem !important;
+}
+
+
+.shape-select-button {
+  font-size: 0.7rem;
+  padding: 0.5em 1.5em;
+  border: 2px solid #2e2e2e;
+  border-radius: 6px;
+  background: #fff;
+  color: #2e2e2e;
+  font-family: 'Press Start 2P', monospace;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  margin-bottom: 0.4em;
+  text-transform: uppercase;
+}
+
+.shape-select-button.selected,
+.shape-select-button:focus {
+  background: #1E90FF;
+  color: #fff;
+  border-color: #1E90FF;
 }

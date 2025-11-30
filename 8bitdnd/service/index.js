@@ -2,6 +2,8 @@ const cookieParser = require('cookie-parser');
 const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
+const http = require('http');
+const WebSocket = require('ws');
 const app = express();
 const authCookieName = 'token';
 
@@ -157,6 +159,152 @@ function setAuthCookie(res, authToken) {
   });
 }
 
-app.listen(port, () => {
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+const rooms = {}; // { roomId: { participants: [{id, name, isGM, ws}], gm: ws, tokens: {} } }
+
+wss.on('connection', (ws) => {
+  ws.on('message', (data) => {
+    let msg;
+    try {
+      msg = JSON.parse(data);
+    } catch (e) {
+      return;
+    }
+
+    // Handle create-room
+    if (msg.type === 'create-room') {
+      rooms[msg.roomId] = { participants: [], gm: ws, tokens: {} };
+      ws.roomId = msg.roomId;
+      ws.isGM = true;
+      ws.send(JSON.stringify({ type: 'room-created', roomId: msg.roomId }));
+      ws.send(JSON.stringify({ type: 'room-state', participants: [], tokens: {} }));
+    }
+
+    // Handle join-room
+    if (msg.type === 'join-room') {
+      const room = rooms[msg.roomId];
+      if (room) {
+        const user = { id: msg.user.id, name: msg.user.name, isGM: false };
+        room.participants.push({ ...user, ws });
+        ws.roomId = msg.roomId;
+        ws.userId = msg.user.id;
+        // Create a token for this user if not present
+        if (!room.tokens[msg.user.id]) {
+          room.tokens[msg.user.id] = {
+            top: 50,
+            left: 50,
+            label: msg.user.name?.slice(0,2).toUpperCase() || "PC",
+            color: "#1E90FF",
+            shape: "circle"
+          };
+        }
+        // Notify all in room
+        broadcastToRoom(msg.roomId, {
+          type: 'participant-joined',
+          user,
+        });
+        // Send updated participant list and tokens
+        broadcastToRoom(msg.roomId, {
+          type: 'room-state',
+          participants: room.participants.map(p => ({
+            id: p.id,
+            name: p.name,
+            isGM: p.isGM
+          })),
+          tokens: room.tokens
+        });
+      } else {
+        ws.send(JSON.stringify({ type: 'error', message: 'Room not found' }));
+      }
+    }
+
+    // Handle move-token
+    if (msg.type === "move-token") {
+      const room = rooms[msg.roomId];
+      if (room && room.tokens && room.tokens[msg.tokenId]) {
+        room.tokens[msg.tokenId] = {
+          ...room.tokens[msg.tokenId],
+          ...msg.position
+        };
+        // Broadcast the updated token position
+        broadcastToRoom(msg.roomId, {
+          type: "token-moved",
+          tokenId: msg.tokenId,
+          position: msg.position
+        });
+        // Optionally, broadcast all tokens for full sync
+        broadcastToRoom(msg.roomId, {
+          type: "tokens-updated",
+          tokens: room.tokens
+        });
+      }
+    }
+
+    // Handle add-tokens (from GM)
+    if (msg.type === "add-tokens") {
+      const room = rooms[msg.roomId];
+      if (room) {
+        // Add each new token to the room's tokens
+        Object.entries(msg.tokens).forEach(([id, token]) => {
+          room.tokens[id] = token;
+        });
+        // Broadcast to all in the room
+        broadcastToRoom(msg.roomId, {
+          type: "add-tokens",
+          tokens: msg.tokens
+        });
+        // Optionally, broadcast all tokens for full sync
+        broadcastToRoom(msg.roomId, {
+          type: "tokens-updated",
+          tokens: room.tokens
+        });
+      }
+    }
+  });
+
+  
+
+  ws.on('close', () => {
+    // Remove from room participants and tokens
+    if (ws.roomId && rooms[ws.roomId]) {
+      const room = rooms[ws.roomId];
+      room.participants = room.participants.filter(p => p.ws !== ws);
+      // Remove token for this user
+      if (ws.userId && room.tokens && room.tokens[ws.userId]) {
+        delete room.tokens[ws.userId];
+        broadcastToRoom(ws.roomId, {
+          type: "tokens-updated",
+          tokens: room.tokens
+        });
+      }
+      // Notify others
+      broadcastToRoom(ws.roomId, {
+        type: 'participant-left',
+        userId: ws.userId
+      });
+    }
+  });
+});
+
+// Helper to broadcast to all in a room (including GM)
+function broadcastToRoom(roomId, message) {
+  const room = rooms[roomId];
+  if (!room) return;
+  // Send to GM
+  if (room.gm && room.gm.readyState === WebSocket.OPEN) {
+    room.gm.send(JSON.stringify(message));
+  }
+  // Send to participants
+  room.participants.forEach(p => {
+    if (p.ws.readyState === WebSocket.OPEN) {
+      p.ws.send(JSON.stringify(message));
+    }
+  });
+}
+
+// Start HTTP & WebSocket server
+server.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
