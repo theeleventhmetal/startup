@@ -110,8 +110,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Backend listens for WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Frontend makes WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **Data sent over WebSocket connection** - I did not complete this part of the deliverable.
-- [ ] **WebSocket data displayed** - I did not complete this part of the deliverable.
-- [ ] **Application is fully functional** - I did not complete this part of the deliverable.
+- [x] **Backend listens for WebSocket connection**  
+- [x] **Frontend makes WebSocket connection**  
+- [x] **Data sent over WebSocket connection** - Host can create game rooms for players to join. Host can then upload a map over the websocket connection for use by the room. Each player can customize and move their own tokens and position is updated live for all members of the room. Host can move all tokens as well as create additional ones to stand in for enemies in a combat scenario. 
+- [x] **WebSocket data displayed** - live token, map, and room participant updates for all users in a room. 
+- [x] **Application is fully functional** - Basic functionality is all there. 

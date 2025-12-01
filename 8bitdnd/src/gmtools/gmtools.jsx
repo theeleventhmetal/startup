@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 export function Gmtools() {
   const WS_URL = import.meta.env.VITE_WS_URL;
-  const PLACEHOLDER_MAP = "../../public/battlemaps/battlemap_placeholder.jpg"; 
+  const PLACEHOLDER_MAP = "/battlemaps/battlemap_placeholder.jpg"; 
   const [showCustomizeModal, setShowCustomizeModal] = useState(false);
   const [roomId, setRoomId] = useState(null);
   const [participants, setParticipants] = useState([]);

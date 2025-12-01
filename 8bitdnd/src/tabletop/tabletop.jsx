@@ -4,7 +4,7 @@ import './tabletop.css';
 
 export function Tabletop() {
   const WS_URL = import.meta.env.VITE_WS_URL;
-  const PLACEHOLDER_MAP = "../../public/battlemaps/battlemap_placeholder.jpg"
+  const PLACEHOLDER_MAP = "/battlemaps/battlemap_placeholder.jpg"
   const [character, setCharacter] = useState(null);
   const [tokens, setTokens] = useState({});
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });

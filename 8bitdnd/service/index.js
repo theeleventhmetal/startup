@@ -5,6 +5,7 @@ const uuid = require('uuid');
 const http = require('http');
 const WebSocket = require('ws');
 const { MongoClient } = require('mongodb');
+const path = require('path');
 const app = express();
 const authCookieName = 'token';
 
