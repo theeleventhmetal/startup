@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static('public'));
 
-// Add this after your other app.use() statements
+
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', 'https://startup.8bitdnd.click');
   res.header('Access-Control-Allow-Credentials', 'true');

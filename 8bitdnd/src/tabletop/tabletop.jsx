@@ -21,7 +21,7 @@ export function Tabletop() {
   const [tokenShape, setTokenShape] = useState("circle");
   const [socket, setSocket] = useState(null);
   const [myId] = useState(() => Math.random().toString(36).substr(2, 9));
-  const [myName, setMyName] = useState(null); // Or prompt for name
+  const [myName, setMyName] = useState(null);
 
   useEffect(() => {
     const ws = new WebSocket(WS_URL);
@@ -71,12 +71,6 @@ export function Tabletop() {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const savedTokens = localStorage.getItem("tokenPositions");
-  //   if (savedTokens) {
-  //     setTokens(JSON.parse(savedTokens));
-  //   }
-  // }, []);
 
   const handleDragStart = (id, e) => {
     const rect = e.target.getBoundingClientRect();
@@ -84,7 +78,7 @@ export function Tabletop() {
     const offsetY = e.clientY - rect.top;
     setDragOffset({ x: offsetX, y: offsetY });
 
-    // Create a styled div for drag image using current token customization
+    
     const dragImage = document.createElement('div');
     dragImage.className = `drag-image ${id}`;
     dragImage.textContent = tokenLabel; // Use the current label
