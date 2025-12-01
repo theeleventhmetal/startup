@@ -2,6 +2,7 @@ import './gmtools.css';
 import React, { useState, useEffect } from 'react';
 
 export function Gmtools() {
+  const WS_URL = import.meta.env.VITE_WS_URL;
   const PLACEHOLDER_MAP = "../../public/battlemaps/battlemap_placeholder.jpg"; 
   const [showCustomizeModal, setShowCustomizeModal] = useState(false);
   const [roomId, setRoomId] = useState(null);
@@ -18,7 +19,7 @@ export function Gmtools() {
 
   // Connect to WebSocket when component mounts
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3000');
+    const ws = new WebSocket(WS_URL);
     setSocket(ws);
 
     ws.onmessage = (event) => {
@@ -333,6 +334,13 @@ export function Gmtools() {
                 Add Tokens
               </button>
 
+              <button
+              className="add-tokens-button"
+              onClick={() => setShowMapUpload(true)}
+              >
+                Upload Map
+              </button>
+
 
             </div>
 
@@ -417,6 +425,44 @@ export function Gmtools() {
             </div>
           </div>
         )}
+
+      {showMapUpload && (
+        <div className="join-table-overlay" onClick={() => setShowMapUpload(false)}>
+          <div className="customize-token-modal" onClick={e => e.stopPropagation()}>
+            <div className="form-group">
+              <label>Upload Map Image</label>
+              <input
+                type="file"
+                accept="image/*"
+                onChange={e => {
+                  const file = e.target.files[0];
+                  if (!file) return;
+                  const reader = new FileReader();
+                  reader.onload = (event) => {
+                    setMapImage(event.target.result);
+                    setShowMapUpload(false);
+                    if (socket && roomId) {
+                      socket.send(JSON.stringify({
+                        type: "upload-map",
+                        roomId,
+                        mapData: event.target.result
+                      }));
+                    }
+                  };
+                  reader.readAsDataURL(file);
+                }}
+              />
+              <button
+                type="button"
+                className="close-join-button"
+                onClick={() => setShowMapUpload(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   )
 }

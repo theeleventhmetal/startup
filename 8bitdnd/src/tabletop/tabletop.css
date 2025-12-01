@@ -27,14 +27,12 @@ header, footer {
   flex: 1;               
   max-height: 75vh;
   max-width: 60vw;
-  height: 75vh;            
-  aspect-ratio: 1 / 1;         
-  background: url("../../public/battlemaps/battlemap_placeholder.jpg") center center / contain no-repeat;
-  background-color: #000;
+  height: 75vh;         
+  /* background: url("../../public/battlemaps/battlemap_placeholder.jpg") center center / contain no-repeat; */
+  background-color: #000000;
   margin: 0em 0 0em 1em;       
   padding: 0;
   box-sizing: border-box;
-  
 }
 
 td {
@@ -119,7 +117,7 @@ td {
   background: #c6bebe;
   color: #000;
   margin: 0em 1 0em 0;
-  padding: 0em;
+  padding: 1em;
   box-sizing: border-box;
   box-shadow: 6px 6px 0px #2e2e2e;
   border-radius: 8px;

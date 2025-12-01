@@ -22,3 +22,4 @@ build/
 .dbConfig
 dbConfig.json
 service/dbConfig.json
+.env

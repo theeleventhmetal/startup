@@ -105,14 +105,30 @@ export function Csheet() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Save full character data
-    localStorage.setItem("character", JSON.stringify(character));
-    
+
+    // Save full character data to backend
+    fetch('/api/charactercard', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(character)
+    })
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to save character to backend');
+        return res.json ? res.json() : null;
+      })
+      .then(() => {
+        console.log('✅ Character saved to backend');
+      })
+      .catch(err => {
+        console.error('❌ Backend save failed, saving to localStorage:', err);
+        localStorage.setItem("character", JSON.stringify(character));
+      });
+
     // Save tabletop-specific data
     const tabletopData = getTabletopData(character);
     localStorage.setItem("tabletopCharacter", JSON.stringify(tabletopData));
-    
+
     navigate("/tabletop");
   };
 

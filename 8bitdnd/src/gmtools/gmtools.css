@@ -98,10 +98,12 @@
   transition: all 0.2s ease;
 }
 
-.participant-item:hover {
-  background-color: #3a3a3a;
+/* .participant-item:hover {
+  background-color: #;
   transform: translateX(2px);
-}
+} */ 
+
+/* implement being able to pull up user character sheets with participant box */
 
 .gm-tabletop {
   flex: 1 0 auto; 
@@ -153,22 +155,22 @@
 
 .bottom-gm-buttons{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 1em;
   align-items: start;
+  margin-right: 0.7em;
 }
 
 .participants-final {
+  flex: 1;
   background-color: #fff;
   border: 2px solid #4a4a4a;
   border-radius: 8px;
   padding: 1.5em;
   margin: 0em 1em 0em 0em;
-  min-height: 300px;
-  max-height: 500px;
-  max-height: 30vh;
-  max-width: 35vw;
-  overflow-y: auto;
+  height: 30vh;
+  width: 32vw;
+  height: 55vh;
   box-shadow: 4px 4px 0px #000;
   font-family: 'Press Start 2P', monospace;
 }

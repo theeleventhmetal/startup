@@ -3,13 +3,13 @@ import { CharacterCard } from './charactercard';
 import './tabletop.css'; 
 
 export function Tabletop() {
+  const WS_URL = import.meta.env.VITE_WS_URL;
+  const PLACEHOLDER_MAP = "../../public/battlemaps/battlemap_placeholder.jpg"
   const [character, setCharacter] = useState(null);
-  const [tokens, setTokens] = useState({
-    pc: { top: 50, left: 50 },
-  });
+  const [tokens, setTokens] = useState({});
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
 
-  // Add these for better WebSocket preparation:
+  const [mapImage, setMapImage] = useState(PLACEHOLDER_MAP);
   const [showCustomizeModal, setShowCustomizeModal] = useState(false);
   const [tokenColor, setTokenColor] = useState("#1E90FF");
   const [tokenLabel, setTokenLabel] = useState("PC");
@@ -21,12 +21,11 @@ export function Tabletop() {
   const [tokenShape, setTokenShape] = useState("circle");
   const [socket, setSocket] = useState(null);
   const [myId] = useState(() => Math.random().toString(36).substr(2, 9));
-  const [myName, setMyName] = useState("Player"); // Or prompt for name
+  const [myName, setMyName] = useState(null); // Or prompt for name
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:3000');
+    const ws = new WebSocket(WS_URL);
     setSocket(ws);
-
     ws.onmessage = (event) => {
       const message = JSON.parse(event.data);
       console.log("WS message:", message);
@@ -46,9 +45,16 @@ export function Tabletop() {
       if (message.type === "tokens-updated") {
         setTokens(message.tokens);
       }
+
       if (message.type === "room-state" && message.tokens) {
         setTokens(message.tokens);
       }
+
+      if (message.type === "map-updated") {
+        setMapImage(message.mapData)
+      }
+
+
     };
 
     return () => ws.close();
@@ -165,6 +171,19 @@ export function Tabletop() {
           onDragOver={handleDragOver}
           onDrop={handleDrop}
         >
+
+          <img
+                src={mapImage}
+                alt="Map"
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "block",
+                  objectFit: "contain",
+                  objectPosition: "center"
+                }}
+              />
+
           {Object.entries(tokens).map(([id, token]) => (
             <div
               key={id}

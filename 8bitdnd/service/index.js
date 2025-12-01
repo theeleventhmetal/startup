@@ -4,6 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const http = require('http');
 const WebSocket = require('ws');
+const { MongoClient } = require('mongodb');
 const app = express();
 const authCookieName = 'token';
 
@@ -91,7 +92,6 @@ const verifyAuth = async (req, res, next) => {
     res.status(401).send({ msg: 'Unauthorized' });
   }
 };
-
 // Update character endpoints
 apiRouter.get('/charactercard', verifyAuth, async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
@@ -262,9 +262,21 @@ wss.on('connection', (ws) => {
         });
       }
     }
-  });
 
-  
+    // Handle upload-map (from GM)
+    if (msg.type === "upload-map") {
+      const room = rooms[msg.roomId];
+      if (room) {
+        // Store the map data in the room
+        room.map = msg.mapData;
+        // Broadcast the new map to all clients in the room
+        broadcastToRoom(msg.roomId, {
+          type: "map-updated",
+          mapData: msg.mapData
+        });
+      }
+    }
+  });
 
   ws.on('close', () => {
     // Remove from room participants and tokens
